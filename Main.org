@@ -1,3 +1,4 @@
+
 #+title Emacs configuration
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 * Basic UI Config
@@ -143,7 +144,7 @@ Fonts config depending on the context
 
 ** Treemacs
 #+begin_src emacs-lisp
-  (use-package lsp-treemacs
+      (use-package lsp-treemacs
       :config
       (global-set-key (kbd "C-c t") 'treemacs)
       (global-set-key (kbd "C-c i") 'treemacs-add-project-to-workspace)
@@ -159,6 +160,18 @@ Fonts config depending on the context
 
 #+end_src
 
+** Emacs Dashboard
+#+begin_src emacs-lisp
+  (use-package page-break-lines)
+
+  (use-package dashboard
+    :ensure t
+    :config
+    (dashboard-setup-startup-hook))
+
+  (setq dashboard-startup-banner "~/.emacs.d/x8.gif")
+  (setq dashboard-center-content t)
+#+end_src
 * Project managment
 ** Projectile
 #+begin_src emacs-lisp
@@ -330,6 +343,14 @@ Saves headaches by creating new src easily
 (use-package format-all)
 #+end_src
 
+** Flycheck
+#+begin_src emacs-lisp
+  (use-package flycheck-clang-tidy
+    :after flycheck
+    :hook
+    (flycheck-mode . flycheck-clang-tidy-setup)
+  )
+#+end_src
 ** Dap mode
 *** Dap core
 #+begin_src emacs-lisp
@@ -373,7 +394,13 @@ Saves headaches by creating new src easily
 #+begin_src emacs-lisp
 (use-package no-littering)
 #+end_src
-
+** Wakatime
+#+begin_src emacs-lisp
+  (use-package wakatime-mode
+    :ensure t)
+  (global-wakatime-mode)
+  (custom-set-variables '(wakatime-api-key "caaff093-9aaf-465a-8c99-a895e08795c1"))
+#+end_src
 * Custom set variable
 #+begin_src emacs-lisp
 (custom-set-variables
