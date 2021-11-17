@@ -399,7 +399,6 @@ Saves headaches by creating new src easily
   (use-package wakatime-mode
     :ensure t)
   (global-wakatime-mode)
-  (custom-set-variables '(wakatime-api-key "caaff093-9aaf-465a-8c99-a895e08795c1"))
 #+end_src
 * Custom set variable
 #+begin_src emacs-lisp
